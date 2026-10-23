@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static article_content %}
+{% block title %}{{ article.title }} | Robótica en marcha{% endblock %}
+{% block content %}
+<article class="story wrap">
+  <a class="back-link" href="{% url 'articles:home' %}"><span aria-hidden="true">←</span> Todos los artículos</a>
+  <header class="story-header">
+    <p class="eyebrow"><span class="eyebrow-dot"></span> Cuaderno de campo</p>
+    <h1>{{ article.title }}</h1>
+    <p class="story-deck">{{ article.summary }}</p>
+    <div class="article-meta"><span>{{ article.author }}</span><span>·</span><time datetime="{{ article.published_at|date:'c' }}">{{ article.published_at|date:'j F Y' }}</time></div>
+  </header>
+  <figure class="story-cover">
+    {% if article.image %}
+      <img src="{{ article.image.url }}" alt="{{ article.image_alt|default:article.title }}">
+    {% else %}
+      <img src="{% static 'images/robotics-cover.png' %}" alt="Ilustración editorial de un brazo robótico articulado">
+    {% endif %}
+    <figcaption>{% if article.image_alt %}{{ article.image_alt }}{% else %}Robótica en marcha · Apuntes sobre sistemas en movimiento{% endif %}</figcaption>
+  </figure>
+  <div class="story-body prose">{{ article.body|article_markdown }}</div>
+  <div class="story-end"><span aria-hidden="true">✳</span><p>Fin de este apunte. La curiosidad continúa.</p></div>
+  <a class="back-link story-return" href="{% url 'articles:home' %}"><span aria-hidden="true">←</span> Volver a las publicaciones</a>
+</article>
+{% endblock %}

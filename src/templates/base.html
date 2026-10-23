@@ -1,0 +1,40 @@
+{% load static %}<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f2">
+  <title>{% block title %}Robótica en marcha{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <a class="brand" href="{% url 'articles:home' %}" aria-label="Robótica en marcha, portada">
+      <span class="brand-mark" aria-hidden="true">R<span>.</span></span>
+      <span class="brand-name">Robótica<br>en marcha</span>
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="{% url 'articles:home' %}">Artículos</a>
+      <a href="{% url 'articles:about' %}">Sobre mí</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand brand--small" href="{% url 'articles:home' %}">
+      <span class="brand-mark" aria-hidden="true">R<span>.</span></span>
+      <span class="brand-name">Robótica en marcha</span>
+    </a>
+    <p>Ideas, máquinas y todo lo que sucede entre ambas.</p>
+    <a class="footer-top" href="#contenido">Volver arriba ↑</a>
+  </footer>
+</body>
+</html>

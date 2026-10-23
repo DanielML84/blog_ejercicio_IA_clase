@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Sobre mí | Robótica en marcha{% endblock %}
+{% block content %}
+<article class="about-page wrap">
+  <p class="eyebrow"><span class="eyebrow-dot"></span> Quién escribe</p>
+  {% if profile %}
+    <h1>Hola, soy <em>{{ profile.name }}.</em></h1>
+    <div class="about-copy prose">{{ profile.bio|linebreaks }}</div>
+  {% else %}
+    <h1>Una persona curiosa, <em>entre máquinas.</em></h1>
+    <div class="about-copy prose"><p>Esta presentación todavía no está escrita. Pronto podrás conocer a la persona detrás de estas notas.</p></div>
+  {% endif %}
+  <a class="text-link" href="{% url 'articles:home' %}"><span aria-hidden="true">←</span> Volver a los artículos</a>
+</article>
+{% endblock %}

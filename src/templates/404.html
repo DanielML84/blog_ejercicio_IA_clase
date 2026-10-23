@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}404 | Robótica en marcha{% endblock %}
+{% block content %}
+<section class="not-found wrap" aria-labelledby="error-title">
+  <p class="error-code">404 <span aria-hidden="true">/</span> señal perdida</p>
+  <h1 id="error-title">Parece que esta página tomó <em>otra órbita.</em></h1>
+  <p>El enlace no apunta a una publicación disponible. Los sistemas también necesitan recalibrarse.</p>
+  <a class="button-link" href="{% url 'articles:home' %}">Volver a la portada <span aria-hidden="true">↗</span></a>
+</section>
+{% endblock %}
