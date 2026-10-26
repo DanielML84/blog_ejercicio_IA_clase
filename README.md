@@ -117,7 +117,8 @@ Cada artículo tiene un campo **Publicado** (verdadero/falso), que en el panel d
 python src\manage.py test articles
 ```
 
-Las imágenes subidas se guardan en `media/` y la base SQLite en `db.sqlite3`; ambos quedan excluidos de Git.## Documentación
+Las imágenes subidas se guardan en `media/` y la base SQLite en `db.sqlite3`; ambos quedan excluidos de Git.
+## Documentación
 
 - [Briefing](briefing.md): objetivo, público y alcance inicial.
 - [PRD](PRD.md): requisitos funcionales, técnicos y criterios de éxito.
