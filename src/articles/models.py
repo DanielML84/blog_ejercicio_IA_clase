@@ -5,9 +5,7 @@ from django.utils.text import slugify
 
 
 class Article(models.Model):
-	class Status(models.TextChoices):
-		DRAFT = 'draft', 'Borrador'
-		PUBLISHED = 'published', 'Publicado'
+	
 
 	title = models.CharField('título', max_length=180)
 	slug = models.SlugField('URL', max_length=200, unique=True, blank=True)
@@ -15,9 +13,8 @@ class Article(models.Model):
 	body = models.TextField('contenido en Markdown')
 	author = models.CharField('autoría', max_length=120)
 	published_at = models.DateTimeField('fecha de publicación', default=timezone.now)
-	status = models.CharField(
-		'estado', max_length=12, choices=Status.choices, default=Status.DRAFT
-	)
+	
+	published = models.BooleanField('publicado', default=False)
 	image = models.ImageField('imagen', upload_to='articles/', blank=True)
 	image_alt = models.CharField('texto alternativo', max_length=180, blank=True)
 	created_at = models.DateTimeField('creado', auto_now_add=True)

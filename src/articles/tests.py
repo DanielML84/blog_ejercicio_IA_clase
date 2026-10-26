@@ -19,14 +19,14 @@ class PublicBlogTests(TestCase):
 			body='## Aprender del entorno\n\nLos sensores convierten datos en decisiones.',
 			author='Equipo editorial',
 			published_at=now,
-			status=Article.Status.PUBLISHED,
+			published=True,
 		)
 		self.draft = Article.objects.create(
 			title='Próximo experimento',
 			slug='proximo-experimento',
 			body='Contenido en preparación.',
 			author='Equipo editorial',
-			status=Article.Status.DRAFT,
+			published=False,
 		)
 
 	def test_home_lists_published_articles_in_date_order(self):
@@ -36,7 +36,7 @@ class PublicBlogTests(TestCase):
 			body='Una nota anterior.',
 			author='Equipo editorial',
 			published_at=timezone.now() - timedelta(days=2),
-			status=Article.Status.PUBLISHED,
+			published=True,
 		)
 
 		response = self.client.get(reverse('articles:home'))
@@ -48,7 +48,7 @@ class PublicBlogTests(TestCase):
 		self.assertEqual(listed_articles, [self.article, older_article])
 
 	def test_home_shows_context_when_no_articles_are_published(self):
-		Article.objects.filter(status=Article.Status.PUBLISHED).delete()
+		Article.objects.filter(published=True).delete()
 
 		response = self.client.get(reverse('articles:home'))
 
